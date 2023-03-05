@@ -9,6 +9,6 @@ import "leaflet/dist/leaflet";
 ReactDOM.createRoot(document.getElementById('root')).render(
   <ContextProvider>
     <App />
-  </ContextProvider>,
-)
+  </ContextProvider>
+);
  

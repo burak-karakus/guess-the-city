@@ -6,9 +6,16 @@ import { GameContext } from "../context/GameContext";
 const Map = () => {
     const { isGameOn, setClickedCity} = useContext(GameContext);
     const mapRef = useRef(null);
-
+ 
     const initializeMap = () => {
         mapRef.current = L.map("map").setView([38.505, 35.4], 6);
+    
+        L.tileLayer(
+            "https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg",
+            {
+                maxZoom: 18
+            }
+        ).addTo(mapRef.current);
     };
     
     useEffect(() => {

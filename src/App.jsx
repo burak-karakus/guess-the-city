@@ -1,21 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import Choose from './components/Choose'
-import './tailwind.css'
+import React from 'react';
+
+import Map from './components/Map'
+
 
 const App = () => {
-  const [count, setCount] = useState(0)
-
   return (
     <div>
-      <Map />
+      <Map /> 
     </div>
     //<div className='min-h-screen bg-gradient-to-b from-green-500 to-pink-500'>
        //<div>test</div>
        
        
     //</div>
-  )
-}
+  );
+};
 
 export default App
