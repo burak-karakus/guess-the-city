@@ -9,7 +9,8 @@ const App = () => {
   return (
     <div className='min-h-screen bg-gradient-to-b from-green-500 to-pink-500'>
        <div>test</div>
-       <Choose/> 
+       
+       <Map/>
     </div>
   )
 }
