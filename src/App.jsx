@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
-import './App.css'
+import './tailwind.css'
 
 const App = () => {
   const [count, setCount] = useState(0)
@@ -13,3 +13,4 @@ const App = () => {
 }
 
 export default App
+1:00:26  dakikadayım
