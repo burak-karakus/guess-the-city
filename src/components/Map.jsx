@@ -3,7 +3,7 @@ import L from "leaflet";
 import {cities} from "../data/cities";
 import { GameContext } from "../context/GameContext";
 
-const Map = () => {
+const Map = ({cityToBeGuessed, gameType}) => {
     const { isGameOn, setClickedCity} = useContext(GameContext);
     const mapRef = useRef(null);
  
@@ -21,6 +21,16 @@ const Map = () => {
     useEffect(() => {
         initializeMap()
     }, []);
+
+    useEffect(() => {
+        if(!isGameOn) {
+            L.geoJSON(cities.features, {
+                style: () => {
+                    return {color: "#fff", fillColor: "#EF33DEFF"};
+                }
+            }).addTo(mapRef.current);
+        }
+    }, [isGameOn, gameType]);
 
     return  <div id="map" className="h-screen w-full z-0"></div>;
     
