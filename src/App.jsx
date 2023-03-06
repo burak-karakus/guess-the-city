@@ -1,9 +1,15 @@
 import React from 'react';
 
 import Map from './components/Map'
+import { cities } from './data/cities';
 
 
 const App = () => {
+
+  const generateRandomCity = () => {
+    return cities.features[Math.floor(Math.random() * cities.features.length)].properties.NAME;
+  }
+
   return (
     <div>
       <Map /> 
