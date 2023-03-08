@@ -10,8 +10,9 @@ import { AnimatePresence, motion } from "framer-motion";
     const {setIsGameOn} = useContext(GameContext);
     
     const backdrop = {
-        hidden: {opacity: 0},
-        visible: {opacity: 1}
+        
+        visible: {opacity: 1},
+        hidden: {opacity: 0}
     };
 
     const modal = {
@@ -22,7 +23,8 @@ import { AnimatePresence, motion } from "framer-motion";
         visible: {
             y: "-50px",
             opacity: 1,
-            transition: { delay: 0.5}
+            transition: { delay: 0.5},
+            
         }
     };
 
@@ -36,8 +38,16 @@ import { AnimatePresence, motion } from "framer-motion";
                     initial="hidden"
                     animate="visible"
                     >
-                        <motion.div variants={modal} className="w-96 h-48 p-4 rounded-lg">
-
+                        <motion.div
+                            className="w-96 h-48 rounded-lg bg-gradient-to-bl from-cyan-500 to-emerald-500 z-20 shadow-amber-900/40 shadow-xl"
+                            variants={modal}
+                        >
+                            <h3 className="text-center text-2xl font-bold text-primaryLight"> Guess The City</h3>
+                            <h2 className="text-center text-primaryLight font-bold "> by</h2>
+                            <div className="flex justify-around">
+                                <div>a</div>
+                                <div>b</div>
+                            </div>
                         </motion.div>
 
                 </motion.div>     
