@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import Map from './components/Map'
 import Choose from './components/Choose';
@@ -6,7 +6,7 @@ import { cities } from './data/cities';
 
 
 const App = () => {
-
+  const [gameType, setGameType] = useState("");
   const generateRandomCity = () => {
     return cities.features[Math.floor(Math.random() * cities.features.length)].properties.NAME;
   }

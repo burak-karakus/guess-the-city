@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { GameContext } from "../context/GameContext";
 import { AnimatePresence, motion } from "framer-motion";
+import { TYPING } from "../constants";
 
 
 
@@ -9,6 +10,12 @@ import { AnimatePresence, motion } from "framer-motion";
     
     const {setIsGameOn} = useContext(GameContext);
     
+    const chooseHandler = (gameType) => {
+        setGameType(gameType);
+        setShowModal(false);
+        setIsGameOn(true);
+    }
+
     const backdrop = {
         
         visible: {opacity: 1},
@@ -39,14 +46,14 @@ import { AnimatePresence, motion } from "framer-motion";
                     animate="visible"
                     >
                         <motion.div
-                            className="w-96 h-48 rounded-lg bg-gradient-to-bl from-cyan-500 to-emerald-500 z-20 shadow-amber-900/40 shadow-xl"
+                            className="w-96 h-48 rounded-lg bg-gradient-to-bl from-cyan-500 to-emerald-500 z-20 shadow-amber-900/40 shadow-xl border-black"
                             variants={modal}
                         >
                             <h3 className="text-center text-2xl font-bold text-primaryLight"> Guess The City</h3>
                             <h2 className="text-center text-primaryLight font-bold "> by</h2>
-                            <div className="flex justify-around">
-                                <div>a</div>
-                                <div>b</div>
+                            <div className="flex justify-around items-center mt-2">
+                                <button onClick={() => chooseHandler(TYPING)}>a</button>
+                                <button>b</button>
                             </div>
                         </motion.div>
 
