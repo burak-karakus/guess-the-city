@@ -1,29 +1,83 @@
-import React, {useContext, useState } from 'react';
+import React, {memo, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
 import Map from './components/Map'
 import Choose from './components/Choose';
 import { cities } from './data/cities';
 import { GameContext } from './context/GameContext';
+import { CLICKING, COUNTDOWN_SECONDS, TYPING } from './constants';
 
 
 const App = () => {
   const [gameType, setGameType] = useState("");
   const [cityToBeGuessed, setCityToBeGuessed] = useState("");
+  const { countdown, setCountdown, isGameOn, clickedCity, setClickedCity, typedCity, setTypedCity, score, setScore} = useContext(GameContext);
+
   const generateRandomCity = () => {
     return cities.features[Math.floor(Math.random() * cities.features.length)].properties.NAME;
   }
-  const { countdown, setCountdown, isGameOn, clickedCity, setClickedCity, typedCity, setTypedCity, score, setScore} = useContext(GameContext);
+
+  const memoizedRandomCity = useMemo(() => generateRandomCity(), [score, isGameOn]);
+
+  const setCityCallback = useCallback(() => {
+    setCityToBeGuessed(memoizedRandomCity);
+    },
+    [memoizedRandomCity, score]
+  );
+
+  const gameController = () => {
+    if(isGameOn && gameType == TYPING) {
+      setCityCallback();
+      if(cityToBeGuessed != "" && cityToBeGuessed.toLocaleLowerCase("tr") == typedCity.toLocaleLowerCase("tr"))
+      {
+        setScore((prevState) => prevState + 1);
+        setCountdown(COUNTDOWN_SECONDS);
+      }
+    }
+    else if(isGameOn && gameType == CLICKING)
+    {
+      setCityCallback();
+      if(cityToBeGuessed != "" && cityToBeGuessed.toLocaleLowerCase("tr") == clickedCity.toLocaleLowerCase("tr"))
+      {
+        setScore((prevState) => prevState + 1);
+        setCountdown(COUNTDOWN_SECONDS);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if(isGameOn) {
+      gameController()
+    }
+  }, [isGameOn, typedCity, clickedCity]);
+  
+  useEffect(() => {
+    if(score > 0) {
+      setCityCallback();
+    }
+  }, [score]);
+
+  useEffect(() => {
+    if(!isGameOn) {
+      setClickedCity("");
+      setTypedCity("");
+      setScore(0);
+      setCountdown(COUNTDOWN_SECONDS);
+      setGameType("");
+    }
+  }, [isGameOn]);
 
   return (
-    <div>
-      <Choose />
-      <Map />
+    <div className="relative">
+      {!isGameOn && <Choose key="modal" setGameType={setGameType} />}
+      {gameType != "" && (
+        <div className={"absolute w-full " +  `${isGameOn ? "z-30" : "z-0"}`}>
+          <GameInterface gameType={gameType} cityToBeGuessed={cityToBeGuessed}
+          />
+        </div>
+      )}
+      {countdown == "X" && <Result />}
+      <Map cityToBeGuessed={cityToBeGuessed}/>
     </div>
-    //<div className='min-h-screen bg-gradient-to-b from-green-500 to-pink-500'>
-       //<div>test</div>
-       
-       
-    //</div>
   );
 };
 
