@@ -9,5 +9,5 @@ body{
 }
 
 .choose-btn {
-    @apply px-3 py-2 bg-orange-400 text-primaryLight hover:bg-orange-500 hover:scale-105 transition duration-300 border-white border rounded-md;
+    @apply px-3 py-2 bg-orange-400 text-primaryLight hover:bg-orange-500 hover:scale-105 transition duration-300 border-white border rounded-md w-20 h-24 flex flex-col items-center justify-center space-y-2;
 }

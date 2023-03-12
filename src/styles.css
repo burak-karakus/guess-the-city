@@ -542,6 +542,11 @@ video {
   z-index: 20;
 }
 
+.mx-auto{
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .mt-2{
   margin-top: 0.5rem;
 }
@@ -552,6 +557,10 @@ video {
 
 .hidden{
   display: none;
+}
+
+.h-10{
+  height: 2.5rem;
 }
 
 .h-48{
@@ -631,6 +640,10 @@ video {
   --tw-gradient-to: #ec4899;
 }
 
+.fill-primaryLight{
+  fill: #f1f5f9;
+}
+
 .text-center{
   text-align: center;
 }
@@ -676,6 +689,21 @@ video {
 
 body{
   font-family: "Montserrat", sans-serif;
+}
+
+.choose-btn{
+  display: flex;
+  height: 6rem;
+  width: 5rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.choose-btn > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
 }
 
 .choose-btn{
