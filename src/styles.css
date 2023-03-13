@@ -523,11 +523,19 @@ video {
   position: absolute;
 }
 
+.relative{
+  position: relative;
+}
+
 .inset-0{
   top: 0px;
   right: 0px;
   bottom: 0px;
   left: 0px;
+}
+
+.top-40{
+  top: 10rem;
 }
 
 .z-0{
@@ -540,6 +548,10 @@ video {
 
 .z-20{
   z-index: 20;
+}
+
+.z-30{
+  z-index: 30;
 }
 
 .mx-auto{
@@ -555,12 +567,20 @@ video {
   display: flex;
 }
 
+.inline-flex{
+  display: inline-flex;
+}
+
 .hidden{
   display: none;
 }
 
 .h-10{
   height: 2.5rem;
+}
+
+.h-14{
+  height: 3.5rem;
 }
 
 .h-48{
@@ -575,8 +595,8 @@ video {
   height: 100vh;
 }
 
-.min-h-screen{
-  min-height: 100vh;
+.w-14{
+  width: 3.5rem;
 }
 
 .w-96{
@@ -599,8 +619,18 @@ video {
   justify-content: space-around;
 }
 
+.space-x-6 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1.5rem * var(--tw-space-x-reverse));
+  margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
 .rounded-lg{
   border-radius: 0.5rem;
+}
+
+.border-2{
+  border-width: 2px;
 }
 
 .border-black{
@@ -608,12 +638,23 @@ video {
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
-.bg-white\/30{
-  background-color: rgb(255 255 255 / 0.3);
+.border-white{
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
-.bg-gradient-to-b{
-  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+.bg-pink-600{
+  --tw-bg-opacity: 1;
+  background-color: rgb(219 39 119 / var(--tw-bg-opacity));
+}
+
+.bg-primaryDark{
+  --tw-bg-opacity: 1;
+  background-color: rgb(51 65 85 / var(--tw-bg-opacity));
+}
+
+.bg-white\/30{
+  background-color: rgb(255 255 255 / 0.3);
 }
 
 .bg-gradient-to-bl{
@@ -626,18 +667,8 @@ video {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
-.from-green-500{
-  --tw-gradient-from: #22c55e;
-  --tw-gradient-to: rgb(34 197 94 / 0);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
-
 .to-emerald-500{
   --tw-gradient-to: #10b981;
-}
-
-.to-pink-500{
-  --tw-gradient-to: #ec4899;
 }
 
 .fill-primaryLight{
@@ -651,6 +682,11 @@ video {
 .text-2xl{
   font-size: 1.5rem;
   line-height: 2rem;
+}
+
+.text-4xl{
+  font-size: 2.25rem;
+  line-height: 2.5rem;
 }
 
 .font-bold{

@@ -2,6 +2,7 @@ import React, {memo, useCallback, useContext, useEffect, useMemo, useState } fro
 
 import Map from './components/Map'
 import Choose from './components/Choose';
+import GameInterface from './components/GameInterface';
 import { cities } from './data/cities';
 import { GameContext } from './context/GameContext';
 import { CLICKING, COUNTDOWN_SECONDS, TYPING } from './constants';
