@@ -76,7 +76,7 @@ const App = () => {
         </div>
       )}
       {countdown == "X" && <Result />}
-      <Map cityToBeGuessed={cityToBeGuessed}/>
+      <Map cityToBeGuessed={cityToBeGuessed} gameType={gameType}/>
     </div>
   );
 };
