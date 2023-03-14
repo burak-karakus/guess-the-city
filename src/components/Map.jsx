@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useContext} from "react";
 import L from "leaflet";
 import {cities} from "../data/cities";
 import { GameContext } from "../context/GameContext";
-import { CLICKING } from "../constants";
+import { CLICKING, TYPING } from "../constants";
 
 const Map = ({cityToBeGuessed, gameType}) => {
     const { isGameOn, setClickedCity} = useContext(GameContext);
@@ -24,7 +24,7 @@ const Map = ({cityToBeGuessed, gameType}) => {
     }, []);
 
     useEffect(() => {
-        if(!isGameOn) {
+        if(isGameOn) {
             L.geoJSON(cities.features, {
                 style: () => {
                     return {color: "#fff", fillColor: "#EF33DEFF"};
@@ -34,18 +34,18 @@ const Map = ({cityToBeGuessed, gameType}) => {
                         setClickedCity(e.target.feature.properties.NAME)
                     });
                     layer.on("mouseover", () => {
-                        //if(true || gameType == CLICKING) {
+                        if(true || gameType == CLICKING) {
                             layer.setStyle({
                                 fillColor: "#0000ff"
                             });
-                        //}
+                        }
                     });
                     layer.on("mouseout", () => {
-                        //if(gameType == CLICKING) {
+                        if(gameType == CLICKING) {
                             layer.setStyle({
                                 fillColor: "#EF33DEFF"
                             });
-                       // }
+                        }
                     })
                 }
             }).addTo(mapRef.current);
@@ -60,7 +60,7 @@ const Map = ({cityToBeGuessed, gameType}) => {
     }, [isGameOn, gameType]);
 
 
-    /*useEffect(() => {
+    useEffect(() => {
         if(gameType == TYPING) {
             mapRef.current.eachLayer((layer) => {
                 if(layer.feature && layer.feature.properties.NAME.toLocaleLowerCase("tr") == cityToBeGuessed.toLocaleLowerCase("tr")) {
@@ -82,7 +82,7 @@ const Map = ({cityToBeGuessed, gameType}) => {
                 }
             })
         }
-    })*/
+    });
 
     return  <div id="map" className="h-screen w-full z-0"></div>;
     
