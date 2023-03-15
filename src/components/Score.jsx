@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { GameContext } from "../context/GameContext";
 import { motion, useAnimation } from "framer-motion";
+import { LOCALSTORAGE_SCORE } from "../constants";
 
 const Score = () => {
     const { score } = useContext(GameContext);
@@ -10,15 +11,15 @@ const Score = () => {
 
     const updateLocalStorage = () => {
 
-        const initialScore = localStorage.getItem("guess-the-city-score");
+        const initialScore = localStorage.getItem(LOCALSTORAGE_SCORE);
         
         if(!initialScore && score > 0) {
-            localStorage.setItem("guess-the-city-score", score);
+            localStorage.setItem(LOCALSTORAGE_SCORE, score);
             return;
         }
 
         if(parseInt(initialScore) < score) {
-            localStorage.setItem("guess-the-city-score", score);
+            localStorage.setItem(LOCALSTORAGE_SCORE, score);
         }
     };
 

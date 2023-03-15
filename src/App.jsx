@@ -3,6 +3,7 @@ import React, {memo, useCallback, useContext, useEffect, useMemo, useState } fro
 import Map from './components/Map'
 import Choose from './components/Choose';
 import GameInterface from './components/GameInterface';
+import Result from './components/Result';
 import { cities } from './data/cities';
 import { GameContext } from './context/GameContext';
 import { CLICKING, COUNTDOWN_SECONDS, TYPING } from './constants';
@@ -82,4 +83,5 @@ const App = () => {
   );
 };
 
-export default App
+export default App;
+
