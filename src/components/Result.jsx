@@ -8,13 +8,13 @@ const Result = () => {
 
     const bestScore = () => {
         const scoreFromLocalStorage = parseInt(localStorage.getItem(LOCALSTORAGE_SCORE));
-        return <div>
+        return (<div>
             Bugüne kadarki en yüksek scorunuzu: {" "}
             <span className="text-sky-500 font-bold">
                 {scoreFromLocalStorage ? scoreFromLocalStorage : "yok =("}
             </span>
-        </div>;
-    }
+        </div>);
+    };
 
     const message = () => {
         
@@ -53,10 +53,9 @@ const Result = () => {
                 </div>
             );
         }
-    }
+    };
 
-    return 
-    ( 
+    return ( 
         <div className="absolute top-1/2 left-1/2 -translate-y-40 -translate-x-1/2 bg-gradient-to-b from-slate-600 to-slate-800 rounded-lg shadow-xl p-4 text-primaryLight flex flex-col justify-center items-center text-center space-y-4 z-30">
             {message()}
             <button className="mt-4" onClick={() => setIsGameOn(false)}>

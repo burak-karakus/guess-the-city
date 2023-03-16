@@ -34,7 +34,7 @@ const Map = ({cityToBeGuessed, gameType}) => {
                         setClickedCity(e.target.feature.properties.NAME)
                     });
                     layer.on("mouseover", () => {
-                        if(true || gameType == CLICKING) {
+                        if(gameType == CLICKING) {
                             layer.setStyle({
                                 fillColor: "#0000ff"
                             });
