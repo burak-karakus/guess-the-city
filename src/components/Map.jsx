@@ -9,12 +9,18 @@ const Map = ({cityToBeGuessed, gameType}) => {
     const mapRef = useRef(null);
  
     const initializeMap = () => {
-        mapRef.current = L.map("map").setView([38.505, 35.4], 6);
+        mapRef.current = L.map("map", { 
+            maxBounds : [
+                [42.228, 25.154],
+                [36.173, 46.029]
+            ]
+        }).setView([38.505, 35.4], 6);
     
         L.tileLayer(
             "https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg",
             {
-                maxZoom: 18
+                maxZoom: 18,
+                
             }
         ).addTo(mapRef.current);
     };

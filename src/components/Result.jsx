@@ -1,16 +1,27 @@
 import React, { useContext} from "react";
-import { LOCALSTORAGE_SCORE } from "../constants";
+import { LOCALSTORAGE_SCORE, TYPING } from "../constants";
 import { GameContext } from "../context/GameContext";
 
 
-const Result = () => {
+const Result = ({cityToBeGuessed, gameType}) => {
     const {score, setIsGameOn} = useContext(GameContext);
+
+    const answerOfTypingCity = () => {
+        if(gameType == TYPING)
+        {
+            return (
+                <div className="text-white font-extrabold">
+                    Cevap: {" "} {cityToBeGuessed}
+                </div>
+            );
+        }
+    }
 
     const bestScore = () => {
         const scoreFromLocalStorage = parseInt(localStorage.getItem(LOCALSTORAGE_SCORE));
         return (<div>
             Bugüne kadarki en yüksek scorunuzu: {" "}
-            <span className="text-sky-500 font-bold">
+            <span className="text-sky-500 font-extrabold">
                 {scoreFromLocalStorage ? scoreFromLocalStorage : "yok =("}
             </span>
         </div>);
@@ -57,6 +68,7 @@ const Result = () => {
 
     return ( 
         <div className="absolute top-1/2 left-1/2 -translate-y-40 -translate-x-1/2 bg-gradient-to-b from-slate-600 to-slate-800 rounded-lg shadow-xl p-4 text-primaryLight flex flex-col justify-center items-center text-center space-y-4 z-30">
+            {answerOfTypingCity()}
             {message()}
             <button className="mt-4" onClick={() => setIsGameOn(false)}>
                 <svg 
