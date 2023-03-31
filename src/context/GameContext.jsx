@@ -8,7 +8,9 @@ export const GameContext = createContext({
     isGameOn: false,
     setIsGameOn: () => {},
     clickedCity: "",
-    setClickedCity: () => {},
+    setClickedCity: () => {
+        console.log("setclicked city");
+    },
     typedCity: "",
     setTypedCity: () => {},
     score: 0,

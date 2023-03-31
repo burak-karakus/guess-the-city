@@ -17,7 +17,7 @@ const Map = ({cityToBeGuessed, gameType}) => {
         }).setView([38.505, 35.4], 6);
     
         L.tileLayer(
-            "https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg",
+            "https://gibs-{s}.earthdata.nasa.gov/wmts/epsg3857/best/BlueMarble_ShadedRelief_Bathymetry/default//EPSG3857_500m/{z}/{y}/{x}.jpeg",
             {
                 maxZoom: 18,
                 
@@ -42,7 +42,7 @@ const Map = ({cityToBeGuessed, gameType}) => {
                     layer.on("mouseover", () => {
                         if(gameType == CLICKING) {
                             layer.setStyle({
-                                fillColor: "#0000ff"
+                                 fillColor: "#0000ff"
                             });
                         }
                     });
